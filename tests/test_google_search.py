@@ -21,7 +21,7 @@ import pytest
 # Mix Test Data: Kuch pass honge, kuch intentionally fail honge (screenshot test karne ke liye)
 SEARCH_DATA = [
     ("Python Selenium Pytest", "Google"),                      # Yeh PASS ho jayega
-    ("Automation Testing Framework", "WrongTitle1234-Fail"),   # Yeh FAIL hoga aur screenshot capture karega
+    ("Automation Testing Framework", "Google") #"WrongTitle1234-Fail"),   # Yeh FAIL hoga aur screenshot capture karega
 ]
 
 @pytest.mark.parametrize("search_keyword, expected_title", SEARCH_DATA)

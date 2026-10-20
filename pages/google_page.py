@@ -1,33 +1,24 @@
+from pages.base_page import BasePage
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 
-class GooglePage:
+class GooglePage(BasePage):
+    SEARCH_INPUT = (By.NAME, "q")
+    COOKIE_ACCEPT_BTN = (By.ID, "L2AGLb")  # Google's "Accept all" button    Google's "Accept all" button ID in many regions
     def __init__(self, driver):
-        self.driver = driver
-        # Locators definition
-        self.search_box = (By.NAME, "q")
-        self.cookie_accept_btn = (By.ID, "L2AGLb") # Google's "Accept all" button ID in many regions
-
-    def open_url(self, url):
+        super().__init__(driver)  # Initialize BasePage
+    def open_google(self, url):
         self.driver.get(url)
+        self.accept_cookies()  # Automatically handle cookie popup when opening
         # Handle Google Cookie popup if it appears
+    def accept_cookies(self):
+        """Safely click the cookie accept button if it appears"""
         try:
-            wait = WebDriverWait(self.driver, 3)
-            accept_btn = wait.until(EC.element_to_be_clickable(self.cookie_accept_btn))
-            accept_btn.click()
-        except TimeoutException:
-            # If no cookie popup appears, continue normally
+            self.click(self.COOKIE_ACCEPT_BTN)
+        except Exception:
+            # If cookie popup doesn't appear in some regions, safely ignore
             pass
 
-    def search_item(self, query):
-        #Explicit Wait: Wait until the search box is ready and clickable
-        wait = WebDriverWait(self.driver, 10)
-        # Find search box and perform search action
-        search_element = wait.until(EC.element_to_be_clickable(self.search_box))
-
-        # Perform search action
-        search_element.send_keys(query)
-        search_element.send_keys(Keys.RETURN)
+def search_for(self, query):
+        # Using BasePage's robust type_text method
+        self.type_text(self.SEARCH_INPUT, query)
+        self.driver.find_element(*self.SEARCH_INPUT).submit()
