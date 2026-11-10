@@ -1,42 +1,40 @@
 from pages.google_page import GooglePage
 import pytest
+from utils.json_reader import JsonReader
+from utils.logger import Logger
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Initialize logger for test module
+log = Logger.get_logger(__name__)
+json_data = JsonReader.read_json("test_data.json")
+SEARCH_DATA = json_data.get("search_queries", [])
 
 
-# Test Data (Data-driven approach: inputs and expected titles separated from logic) for failed test
-# FAILED_SEARCH_DATA = [
-#     ("Python Selenium Pytest", "Python Selenium Pytest - Google Search"),
-#     ("Automation Testing Framework", "Automation Testing Framework - Google Search"),
+@pytest.mark.parametrize("data", SEARCH_DATA)
+def test_google_search(driver, data):
+    search_keyword = data["search_keyword"]
+    expected_title = data["expected_title"]
 
-
-# ]
-
-# Test Data (Data-driven approach: inputs and expected titles separated from logic) for passed test
-# PASSED_SEARCH_DATA = [
-#     ("Python Selenium Pytest", "Google"),
-#     ("Automation Testing Framework", "Google"),
-
-
-# ]
-
-# Mix Test Data: Kuch pass honge, kuch intentionally fail honge (screenshot test karne ke liye)
-SEARCH_DATA = [
-    ("Python Selenium Pytest", "Google"),                      # Yeh PASS ho jayega
-    ("Automation Testing Framework", "Google") #"WrongTitle1234-Fail"),   # Yeh FAIL hoga aur screenshot capture karega
-]
-
-@pytest.mark.parametrize("search_keyword, expected_title", SEARCH_DATA)
-def test_google_search(driver, search_keyword, expected_title):
+    log.info(f"Starting test_google_search with keyword: '{search_keyword}'")
     #Initialize Google page Object
     google_page = GooglePage(driver)
 
     # Open Google Url
     google_page.open_url("https://www.google.com")
+    
+    google_page.search(search_keyword)
+    log.info(f"Successfully performed search for: '{search_keyword}'")
+    
+    # Robust Explicit Wait: Wait until the page title contains the expected keyword (up to 10 seconds)
+    try:
+        WebDriverWait(driver, 10).until(
+            EC.title_contains(search_keyword)
+        )
+    except Exception as e:
+        log.warning(f"Title did not update in time for keyword '{search_keyword}'. Current title: '{driver.title}'")
 
-    #Perform Search
-
-    google_page.search_item(search_keyword)
-
-    #Basic assertion to chrck if title contains expected keywords
-
-    assert expected_title in driver.title
+    # Final Assertion
+    assert expected_title in driver.title, f"Expected '{expected_title}' in title, but got '{driver.title}'"
+    log.info(f"Test passed successfully for query: '{search_keyword}'")
 

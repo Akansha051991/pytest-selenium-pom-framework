@@ -1,0 +1,7 @@
+{
+  "search_queries": [
+    {"search_keyword": "Selenium Python Automation", "expected_title": "Selenium Python Automation"},
+    {"search_keyword": "Pytest framework tutorial", "expected_title": "Pytest framework tutorial"},
+    {"search_keyword": "Page object model design pattern", "expected_title": "Page object model design pattern"}
+  ]
+}
