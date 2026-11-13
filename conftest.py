@@ -33,8 +33,11 @@ def driver(request):
     cli_browser = request.config.getoption("--browser")
     browser_name = cli_browser.lower() if cli_browser else ConfigReader.get_browser().lower()
     cli_headless = request.config.getoption("--headless")
-    # Properly evaluate headless option string to boolean
-    if isinstance(cli_headless, str):
+    
+    # Properly evaluate headless option with GitHub Actions CI support
+    if os.getenv("CI") == "true":
+        is_headless = True
+    elif isinstance(cli_headless, str):
         is_headless = cli_headless.lower() in ("true", "yes", "1")
     else:
         is_headless = bool(cli_headless)
