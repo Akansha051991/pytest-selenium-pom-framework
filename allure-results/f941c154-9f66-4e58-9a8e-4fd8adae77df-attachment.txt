@@ -1,0 +1,2 @@
+
+[INFO] Successfully created post with ID: 101

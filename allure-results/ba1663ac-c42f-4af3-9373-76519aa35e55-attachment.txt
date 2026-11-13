@@ -1,0 +1,2 @@
+
+[INFO] Successfully fetched 10 users via API.

@@ -1,0 +1,8 @@
+2026-11-11 13:10:11 [INFO] [conftest.py:42] - --- STARTING TEST: Setting up Chrome Browser (Headless: False) ---
+2026-11-11 13:10:13 [INFO] [conftest.py:78] - Navigating to Base URL: https://www.google.com
+2026-11-11 13:10:15 [INFO] [test_google_search.py:19] - Starting test_google_search with keyword: 'Page object model design pattern'
+2026-11-11 13:10:15 [INFO] [google_page.py:21] - Cookie banner accepted successfully.
+2026-11-11 13:10:15 [INFO] [google_page.py:28] - Typing search query: 'Page object model design pattern'
+2026-11-11 13:10:17 [INFO] [test_google_search.py:27] - Successfully performed search for: 'Page object model design pattern'
+2026-11-11 13:10:17 [INFO] [test_google_search.py:39] - Test passed successfully for query: 'Page object model design pattern'
+2026-11-11 13:10:17 [INFO] [conftest.py:85] - --- TEARDOWN: Closing Chrome Browser ---

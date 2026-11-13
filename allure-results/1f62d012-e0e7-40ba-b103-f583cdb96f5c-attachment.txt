@@ -1,0 +1,5 @@
+2026-11-11 13:10:10 [INFO] [conftest.py:42] - --- STARTING TEST: Setting up Chrome Browser (Headless: False) ---
+2026-11-11 13:10:12 [INFO] [conftest.py:78] - Navigating to Base URL: https://www.google.com
+2026-11-11 13:10:16 [ERROR] [conftest.py:122] - Test failed: test_intentional_failure_and_screenshot. Screenshot saved to reports/failure_test_intentional_failure_and_screenshot_2026-11-11_13-10-16.png
+2026-11-11 13:10:17 [INFO] [conftest.py:140] - Failure screenshot successfully attached to Allure report.
+2026-11-11 13:10:17 [INFO] [conftest.py:85] - --- TEARDOWN: Closing Chrome Browser ---
