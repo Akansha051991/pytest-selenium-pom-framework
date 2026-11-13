@@ -1,0 +1,4 @@
+[32mINFO    [0m conftest:conftest.py:42 --- STARTING TEST: Setting up Chrome Browser (Headless: False) ---
+[33mWARNING [0m selenium.webdriver.common.selenium_manager:selenium_manager.py:168 Metadata file C:\Users\akans\.cache\selenium\se-metadata.json cannot be parsed: EOF while parsing a string at line 7 column 26. Using empty metadata
+[32mINFO    [0m conftest:conftest.py:78 Navigating to Base URL: https://www.google.com
+[32mINFO    [0m conftest:conftest.py:85 --- TEARDOWN: Closing Chrome Browser ---

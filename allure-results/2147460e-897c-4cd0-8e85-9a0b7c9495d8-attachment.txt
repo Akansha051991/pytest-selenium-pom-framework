@@ -1,0 +1,8 @@
+2026-11-11 12:45:23 [INFO] [conftest.py:41] - --- STARTING TEST: Setting up Chrome Browser (Headless: False) ---
+2026-11-11 12:45:24 [INFO] [conftest.py:77] - Navigating to Base URL: https://www.google.com
+2026-11-11 12:45:25 [INFO] [test_google_search.py:19] - Starting test_google_search with keyword: 'Pytest framework tutorial'
+2026-11-11 12:45:26 [INFO] [google_page.py:21] - Cookie banner accepted successfully.
+2026-11-11 12:45:26 [INFO] [google_page.py:28] - Typing search query: 'Pytest framework tutorial'
+2026-11-11 12:45:26 [INFO] [test_google_search.py:27] - Successfully performed search for: 'Pytest framework tutorial'
+2026-11-11 12:45:28 [INFO] [test_google_search.py:39] - Test passed successfully for query: 'Pytest framework tutorial'
+2026-11-11 12:45:28 [INFO] [conftest.py:84] - --- TEARDOWN: Closing Chrome Browser ---

@@ -7,6 +7,7 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 from utils.config_reader import ConfigReader
 from utils.logger import Logger
+import allure
 
 log = Logger.get_logger(__name__)
 
@@ -128,6 +129,15 @@ def pytest_runtest_makereport(item, call):
                 extra = getattr(rep, "extra", [])
                 extra.append(pytest_html.extras.image(screenshot_base64))
                 rep.extra = extra
+                
+            # 3. NEW: Attach screenshot directly to Allure Report dashboard
+                screenshot_png = driver.get_screenshot_as_png()
+                allure.attach(
+                    screenshot_png,
+                    name="failure_screenshot",
+                    attachment_type=allure.attachment_type.PNG
+                )
+                log.info("Failure screenshot successfully attached to Allure report.")
                 
             except Exception as e:
                 log.error(f"Failed to capture/attach failure screenshot: {e}")

@@ -1,0 +1,8 @@
+2026-11-11 13:03:36 [INFO] [conftest.py:42] - --- STARTING TEST: Setting up Chrome Browser (Headless: False) ---
+2026-11-11 13:03:38 [INFO] [conftest.py:78] - Navigating to Base URL: https://www.google.com
+2026-11-11 13:03:39 [INFO] [test_google_search.py:19] - Starting test_google_search with keyword: 'Selenium Python Automation'
+2026-11-11 13:03:40 [INFO] [google_page.py:21] - Cookie banner accepted successfully.
+2026-11-11 13:03:40 [INFO] [google_page.py:28] - Typing search query: 'Selenium Python Automation'
+2026-11-11 13:03:40 [INFO] [test_google_search.py:27] - Successfully performed search for: 'Selenium Python Automation'
+2026-11-11 13:03:43 [INFO] [test_google_search.py:39] - Test passed successfully for query: 'Selenium Python Automation'
+2026-11-11 13:03:43 [INFO] [conftest.py:85] - --- TEARDOWN: Closing Chrome Browser ---
